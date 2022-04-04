@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "364962399802",
+    "project_id": "book-market-dcefc",
+    "storage_bucket": "book-market-dcefc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364962399802:android:07e24f78937f23ba8e9703",
+        "android_client_info": {
+          "package_name": "com.ducdiep.bookmarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364962399802-vh4abdi1le16kbjmp4dkk2e2c54tlj59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ducdiep.bookmarket",
+            "certificate_hash": "1a12c58cdc0a8beb1ee1d8f6491f723c61ee083f"
+          }
+        },
+        {
+          "client_id": "364962399802-s8kvh67ibifhc90m9dhi8uvj6lqle3tv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiK2ddll0GuDHo9xq6CoCaKjQ4TIg9z-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364962399802-s8kvh67ibifhc90m9dhi8uvj6lqle3tv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

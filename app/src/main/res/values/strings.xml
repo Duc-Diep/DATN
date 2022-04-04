@@ -1,0 +1,78 @@
+<resources>
+    <string name="app_name">BookMarket</string>
+    <string name="menu_home">Trang chủ</string>
+    <string name="menu_cart">Giỏ hàng</string>
+    <string name="menu_other_product">Đồ dùng học tập khác</string>
+    <string name="history">Lịch sử mua hàng</string>
+    <string name="menu_account">Tài khoản</string>
+    <string name="menu_search">Tìm kiếm sách</string>
+    <string name="offer_list_book">Đề xuất cho bạn</string>
+    <string name="new_list">Mới cập nhật</string>
+    <string name="hot_list">Sách hot nhất</string>
+    <string name="contact">Liên hệ: 0981206317</string>
+    <string name="description">Mô tả: </string>
+    <string name="similar">Các sách tương tự</string>
+    <string name="rank_and_comment">Xếp hạng và đánh giá</string>
+    <string name="evaluate">Gửi đánh giá</string>
+    <string name="add_to_cart">Thêm vào giỏ hàng</string>
+    <string name="page">trang</string>
+    <string name="numOfEvaluate"> lượt đánh giá</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="error_evaluate">Có lỗi trong quá trình đánh giá, Vui lòng thử lại sau</string>
+    <string name="your_evaluate">Bạn đã đánh giá cuốn sách này </string>
+    <string name="star"> sao</string>
+    <string name="add_to_cart_sucess">Thêm vào giỏ hàng thành công </string>
+    <string name="buy">Đặt hàng</string>
+    <string name="nothing">Không có mặt hàng nào trong giỏ hàng</string>
+    <string name="buy_success"> Thanh toán thành công </string>
+    <string name="delete_item_request">Bạn có chắc chắn muốn xóa mặt hàng này khỏi giỏ hàng?</string>
+    <string name="tutorial">Giữ vào mặt hàng để xóa khỏi giỏ hàng</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="ok">Đồng ý </string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="evaluate_eror">Có lỗi xả ra trong quá trình đánh giá xin thử lại sau!</string>
+    <string name="delete_item_cart">Bạn có thể giữ vào mặt hàng để xóa khỏi giỏ hàng</string>
+
+    <!--    login-->
+    <string name="input_username">Nhập email</string>
+    <string name="input_password">Nhập mật khẩu</string>
+    <string name="confirm_pass">Xác nhận mật khẩu</string>
+    <string name="forget_pass">Quên mật khẩu?</string>
+    <string name="newbie">Bạn chưa có tài khoản? </string>
+    <string name="check_null">Tên tài khoản hoặc mật khẩu không đc để trống</string>
+    <string name="check_equal">Xác nhận mật khẩu phải giống nhau</string>
+    <string name="check_login_fail">Sai tên tài khoản hoặc mật khẩu</string>
+    <string name="check_sucess_true">Đăng kí thành công</string>
+    <string name="check_sucess_false">Thông tin chưa hợp lệ</string>
+    <string name="check_confirm_code">Vui lòng điền mã xác nhận</string>
+    <string name="sign_up">Đăng ký tài khoản</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_in_now">Đăng nhập ngay?</string>
+    <string name="sign_out">Đăng xuất</string>
+    <string name="email_address">Địa chỉ email: </string>
+    <string name="phone_number">Số điện thoại: </string>
+    <string name="address">Địa chỉ: </string>
+    <string name="full_name">Họ tên: </string>
+    <string name="request_sign_up_acc"><b>Đăng kí ngay</b></string>
+    <string name="confirm_code">Nhập mã xác thực: </string>
+    <string name="un_login">Bạn chưa đăng nhập!</string>
+    <string name="delete_history">Xóa lịch sử</string>
+    <string name="login_sucess">Đăng nhập thành công</string>
+    <string name="select_option_buy">Chọn phương thức thanh toán</string>
+    <string name="delete_trans">Giao dịch bị hủy bỏ</string>
+    <string name="your_choice">Đặt hàng thành công\n Phương thức thanh toán: </string>
+    <string name="delete_success">Xóa thành công</string>
+    <string name="logout_success">Đăng xuất thành công</string>
+
+    <string-array name="option_buy">
+        <item>Thanh toán qua MoMo</item>
+        <item>Internet banking</item>
+        <item>Thanh toán khi nhận hàng</item>
+    </string-array>
+    //internet
+    <string name="check_internet">Không có kết nối internet, vui lòng thử lại!</string>
+    //introduce
+    <string name="introduce">Giới thiệu</string>
+    <string name="phone_introduce">0981206317</string>
+    <string name="gender">Giới tính: </string>
+</resources>

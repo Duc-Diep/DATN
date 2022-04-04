@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:menuCategory="secondary"
+        android:title="Trang chủ"
+        android:icon="@drawable/ic_baseline_home_24"/>
+    <item
+        android:id="@+id/categoryFragment"
+        android:menuCategory="secondary"
+        android:title="Danh mục"
+        android:icon="@drawable/ic_baseline_category_24"/>
+    <item
+        android:id="@+id/cartFragment"
+        android:menuCategory="secondary"
+        android:title="Giỏ hàng"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"/>
+    <item
+        android:id="@+id/userInforFragment"
+        android:menuCategory="secondary"
+        android:title="Cá nhân"
+        android:icon="@drawable/ic_baseline_category_24"/>
+</menu>
