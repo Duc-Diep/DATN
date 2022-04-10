@@ -4,17 +4,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-class LoginViewModel:ViewModel() {
+class ForgotPasswordViewModel : ViewModel() {
     var isSuccess = MutableLiveData<Boolean>()
     var isLoading = MutableLiveData<Boolean>()
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
-    fun logIn(email:String,password:String){
+    fun sendEmail(email: String) {
         isLoading.value = true
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener{
-            if (it.isSuccessful){
-                var user = FirebaseAuth.getInstance().currentUser
+        auth.sendPasswordResetEmail(email).addOnCompleteListener {
+            if (it.isSuccessful) {
                 isSuccess.value = true
-            }else{
+            } else {
                 isSuccess.value = false
             }
             isLoading.value = false

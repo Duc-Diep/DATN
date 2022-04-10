@@ -11,6 +11,7 @@
         android:theme="@style/Theme.BookMarket">
         <activity android:name=".ui.client.login.RegisterActivity" />
         <activity android:name=".ui.client.login.LoginActivity" />
+        <activity android:name=".ui.client.login.ForgotPasswordActivity" />
         <activity android:name=".ui.client.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

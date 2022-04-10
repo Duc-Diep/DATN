@@ -3,6 +3,7 @@ package com.ducdiep.bookmarket.ui.client.cart
 import android.os.Bundle
 import android.view.View
 import com.ducdiep.bookmarket.R
+import com.ducdiep.bookmarket.base.BaseFragment
 import com.ducdiep.bookmarket.databinding.FragmentCartBinding
 import com.ducdiep.bookmarket.extensions.viewBinding
 

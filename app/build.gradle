@@ -58,4 +58,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
 
     implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
+
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
 }

@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/book_bgr"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="15dp"
     tools:context=".ui.client.login.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:text="@string/vinabook"
+        android:textColor="#2396A5"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layout_edt_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/sign_in"
+        android:textColor="@color/black"
+        android:textSize="30dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_edt_email"
@@ -19,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email_address"
-            android:inputType="number"
+            android:inputType="text"
             app:counterEnabled="true">
 
         </com.google.android.material.textfield.TextInputEditText>
@@ -42,35 +66,79 @@
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_edt_password"
+        android:paddingVertical="10dp"
+        android:textStyle="bold"
+        android:textColor="@color/blue_teal"
+        android:text="@string/forget_pass"
+        android:textSize="18dp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layout_edt_password"
+        android:layout_below="@id/tv_forgot_password"
         android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/layout_btn_login"
         android:text="@string/sign_in"
         android:textColor="@color/text_login" />
 
-    <TextView
-        android:id="@+id/tv_ques"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:text="@string/newbie"
-        android:textSize="18dp" />
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/btn_login"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
 
     <TextView
-        android:id="@+id/tv_register"
+        android:id="@+id/hotline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@id/tv_ques"
-        android:text="@string/request_sign_up_acc"
+        android:layout_above="@id/ll_resquest"
+        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
-        android:textColor="@color/btn_login"
-        android:textSize="18dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/hotline"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_resquest"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_ques"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="@string/newbie"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/tv_ques"
+            android:text="@string/request_sign_up_acc"
+            android:textColor="@color/blue_teal"
+            android:textSize="18dp" />
+    </LinearLayout>
 </RelativeLayout>

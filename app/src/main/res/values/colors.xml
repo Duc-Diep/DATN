@@ -14,6 +14,6 @@
     <color name="text_btn_add_cart">#fff</color>
     <color name="bgr_btn_add_cart">#2196F3</color>
     <color name="text_login">#fff</color>
-    <color name="btn_login">#2196F3</color>
+    <color name="blue_teal">#2196F3</color>
     <color name="tool_bar">#03A9F4</color>
 </resources>

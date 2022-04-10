@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.ducdiep.bookmarket.R
+import com.ducdiep.bookmarket.base.BaseFragment
 import com.ducdiep.bookmarket.databinding.FragmentUserInforBinding
-import com.ducdiep.bookmarket.extensions.onClick
 import com.ducdiep.bookmarket.extensions.viewBinding
 import com.ducdiep.bookmarket.ui.client.login.LoginActivity
 
@@ -15,7 +15,7 @@ class UserInforFragment : BaseFragment(R.layout.fragment_user_infor) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnLogin.onClick {
+        binding.btnLoginAndLogout.setOnClickListener {
             startActivity(Intent(context,LoginActivity::class.java))
         }
     }

@@ -22,8 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="@string/sign_up"
             android:layout_marginBottom="15dp"
+            android:text="@string/sign_up"
             android:textSize="22dp">
 
         </TextView>
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email_address"
-                android:inputType="number"
+                android:inputType="text"
                 app:counterEnabled="true">
 
             </com.google.android.material.textfield.TextInputEditText>
@@ -114,21 +114,22 @@
 
         <LinearLayout
             android:id="@+id/ll_gender"
-            android:layout_below="@id/layout_address"
             android:layout_width="match_parent"
-            android:paddingHorizontal="10dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_address"
             android:background="#E0E0E0"
-            android:layout_height="wrap_content">
+            android:paddingHorizontal="10dp">
+
             <TextView
                 android:id="@+id/tv_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@id/layout_address"
                 android:layout_toLeftOf="@id/rd_gender"
-                android:text="@string/gender"
                 android:gravity="center_vertical"
+                android:text="@string/gender"
                 android:textColor="@color/black"
-                android:textSize="17dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:textSize="17dp" />
 
             <RadioGroup
                 android:id="@+id/rd_gender"
@@ -140,6 +141,7 @@
                     android:id="@+id/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="Nam" />
 
                 <RadioButton
@@ -150,15 +152,21 @@
             </RadioGroup>
         </LinearLayout>
 
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/btn_confirm_register"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="10dp"
+            android:visibility="gone" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_confirm_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_below="@id/ll_gender"
+            android:layout_margin="20dp"
             android:background="@drawable/layout_btn_login"
             android:text="@string/sign_up"
             android:textColor="@color/text_login" />

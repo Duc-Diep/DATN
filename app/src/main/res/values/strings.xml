@@ -75,4 +75,8 @@
     <string name="introduce">Giới thiệu</string>
     <string name="phone_introduce">0981206317</string>
     <string name="gender">Giới tính: </string>
+    <string name="vinabook">Vinabook</string>
+    <string name="hotline">Hotline: 098206317</string>
+    <string name="infor_custome">Thông tin cá nhân</string>
+    <string name="manage_order">Quản lý đơn hàng</string>
 </resources>
