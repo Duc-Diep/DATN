@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/manage_books"
+        android:icon="@drawable/ic_baseline_menu_book"
+        android:title="@string/manage_books" />
+    <item
+        android:id="@+id/manage_category"
+        android:icon="@drawable/ic_baseline_bookmarks"
+        android:title="@string/manage_category" />
+    <item
+        android:id="@+id/manage_account"
+        android:icon="@drawable/ic_baseline_account"
+        android:title="@string/manage_account" />
+    <item
+        android:id="@+id/manage_order"
+        android:icon="@drawable/ic_baseline_shopping_cart"
+        android:title="@string/manage_order" />
+</menu>

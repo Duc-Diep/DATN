@@ -3,7 +3,8 @@ package com.ducdiep.bookmarket.ui.client.login
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ducdiep.bookmarket.base.KEY_USERS
+import com.ducdiep.bookmarket.base.TABLE_USERS
+import com.ducdiep.bookmarket.extensions.createInvisiblePassword
 import com.ducdiep.bookmarket.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -21,7 +22,8 @@ class RegisterViewModel : ViewModel() {
                 Log.d("abcc", "user: ${firebaseUser.toString()}")
                 val newUser = user
                 newUser.user_id = firebaseUser?.uid.toString()
-                FirebaseDatabase.getInstance().getReference(KEY_USERS)
+                newUser.password = createInvisiblePassword(user.password.length)
+                FirebaseDatabase.getInstance().getReference(TABLE_USERS)
                     .child(firebaseUser?.uid.toString()).setValue(newUser).addOnCompleteListener {
                         if (it.isSuccessful){
                             isSuccess.value = it.isSuccessful

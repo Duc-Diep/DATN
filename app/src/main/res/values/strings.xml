@@ -79,4 +79,15 @@
     <string name="hotline">Hotline: 098206317</string>
     <string name="infor_custome">Thông tin cá nhân</string>
     <string name="manage_order">Quản lý đơn hàng</string>
+    <string name="manage_admin">Quản lý sản phẩm (admin)</string>
+    <string name="change_pass">Đổi mật khảu</string>
+    <string name="email">Email:</string>
+    <string name="manage_books">Quản lý sản phẩm</string>
+    <string name="manage_category">Quản lý danh mục</string>
+    <string name="manage_account">Quản lý tài khoản</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="account_details">Thông tin chi tiết tài khoản</string>
+    <string name="delete">Xóa</string>
+    <string name="title_add_category">Thêm mới danh mục</string>
 </resources>

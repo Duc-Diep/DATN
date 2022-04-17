@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/common_padding">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/change_pass"
+        android:textColor="#009688"
+        android:textSize="25dp">
+
+    </TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_edt_current_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginTop="@dimen/common_margin"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_current_pass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Nhập mật khẩu hiện tại"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="#4B413A" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_edt_new_pass"
+        android:layout_width="match_parent"
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="@dimen/common_margin"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_edt_current_pass">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_new_pass"
+            android:textColor="@color/black"
+            android:textColorHint="#4B413A"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:hint="Nhập mật khẩu mới" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dt_confirm_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/common_margin"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
+        app:passwordToggleEnabled="true"
+        android:layout_below="@id/layout_edt_new_pass">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_confirm_pass"
+            android:textColor="@color/black"
+            android:textColorHint="#4B413A"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textPassword"
+            android:hint="Nhập lại mật khẩu mới" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_change_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_dt_confirm_pass"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginTop="@dimen/common_margin"
+        android:background="@drawable/layout_btn_login"
+        android:paddingHorizontal="5dp"
+        android:text="@string/confirm">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_dt_confirm_pass"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/common_margin"
+        android:layout_marginEnd="@dimen/common_margin"
+        android:background="@drawable/layout_btn_login"
+        android:padding="5dp"
+        android:text="@string/cancel">
+
+    </androidx.appcompat.widget.AppCompatButton>
+    <ProgressBar
+        android:id="@+id/processBar"
+        android:layout_below="@+id/btn_cancel"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_width="40dp"
+        android:layout_height="40dp">
+    </ProgressBar>
+</RelativeLayout>

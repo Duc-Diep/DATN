@@ -6,15 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.ducdiep.bookmarket.R
-import com.ducdiep.bookmarket.base.BaseActivity
-import com.ducdiep.bookmarket.base.IMG_DEFAULT_FEMALE
-import com.ducdiep.bookmarket.base.IMG_DEFAULT_MALE
-import com.ducdiep.bookmarket.base.ROLE_CUSTOMER
+import com.ducdiep.bookmarket.base.*
 import com.ducdiep.bookmarket.databinding.ActivityRegisterBinding
-import com.ducdiep.bookmarket.extensions.createInvisiblePassword
-import com.ducdiep.bookmarket.extensions.getTimeNow
-import com.ducdiep.bookmarket.extensions.viewBinding
+import com.ducdiep.bookmarket.extensions.*
 import com.ducdiep.bookmarket.models.User
+import com.ducdiep.bookmarket.utils.DateTimePickerDialog
 import java.util.*
 
 class RegisterActivity : BaseActivity(R.layout.activity_register) {
@@ -29,7 +25,7 @@ class RegisterActivity : BaseActivity(R.layout.activity_register) {
     }
 
     private fun initObserve() {
-       registerViewModel =  ViewModelProvider(this).get(RegisterViewModel::class.java)
+        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         registerViewModel.isLoading.observe(this) {
             if (it) {
                 binding.pbLoading.visibility = View.VISIBLE
@@ -38,11 +34,11 @@ class RegisterActivity : BaseActivity(R.layout.activity_register) {
             }
         }
 
-        registerViewModel.isSuccess.observe(this){
-            if (it){
+        registerViewModel.isSuccess.observe(this) {
+            if (it) {
                 finish()
                 Toast.makeText(this, "Đăng kí thành công", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(this, "Đăng kí thất bại", Toast.LENGTH_SHORT).show()
             }
         }
@@ -56,6 +52,9 @@ class RegisterActivity : BaseActivity(R.layout.activity_register) {
         binding.btnBack.setOnClickListener {
             finish()
         }
+        binding.tvDateOfBirth.setOnClickListener {
+            showDialogDateTimePicker()
+        }
     }
 
     private fun checkValidAndRegister() {
@@ -66,6 +65,7 @@ class RegisterActivity : BaseActivity(R.layout.activity_register) {
         val username: String = binding.edtFullname.text.toString().trim()
         val gender = if (binding.male.isChecked) "Nam" else "Nữ"
         val avatar = if (binding.male.isChecked) IMG_DEFAULT_MALE else IMG_DEFAULT_FEMALE
+        val dob = binding.tvDateOfBirth.text.toString()
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.edtEmail.setError("Chưa đúng định dạng email")
             binding.edtEmail.requestFocus()
@@ -87,14 +87,32 @@ class RegisterActivity : BaseActivity(R.layout.activity_register) {
             return
         }
         val user = User(
-            address, avatar, getTimeNow(), email, username, createInvisiblePassword(pass.length), gender, "",
-            ROLE_CUSTOMER, getTimeNow(), ""
+            address,
+            avatar,
+            getTimeNow(),
+            email,
+            username,
+            pass,
+            gender,
+            "",
+            ROLE_CUSTOMER,
+            getTimeNow(),
+            "",
+            dob, 1
         )
         registerViewModel.register(user)
     }
 
-    private fun initViews() {
+    private fun showDialogDateTimePicker() {
+        val datePicker = DateTimePickerDialog.getInstance(Calendar.getInstance())
+        datePicker.setOnDateChange { calendar ->
+            binding.tvDateOfBirth.text = calendar.clearTime().parseToString(DATE_FORMAT)
+        }
+        datePicker.show(supportFragmentManager, null)
+    }
 
+    private fun initViews() {
+        binding.tvDateOfBirth.text = Calendar.getInstance().clearTime().parseToString(DATE_FORMAT)
     }
 
 }
