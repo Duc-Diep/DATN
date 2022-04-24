@@ -1,6 +1,5 @@
 package com.ducdiep.bookmarket.extensions
 
-import android.util.Log
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,5 +19,10 @@ fun createInvisiblePassword(length: Int): String {
 }
 
 fun getFormatMoney(long: Long):String{
-    return NumberFormat.getNumberInstance(Locale("vi")).format(long) + " vnđ"
+    return NumberFormat.getNumberInstance(Locale("vi")).format(long)
+}
+fun getSlug(str:String):String{
+    var s = str.toLowerCase()
+    s = s.replace(" ","_")
+    return s
 }

@@ -80,7 +80,7 @@
     <string name="infor_custome">Thông tin cá nhân</string>
     <string name="manage_order">Quản lý đơn hàng</string>
     <string name="manage_admin">Quản lý sản phẩm (admin)</string>
-    <string name="change_pass">Đổi mật khảu</string>
+    <string name="change_pass">Đổi mật khẩu</string>
     <string name="email">Email:</string>
     <string name="manage_books">Quản lý sản phẩm</string>
     <string name="manage_category">Quản lý danh mục</string>
@@ -90,4 +90,13 @@
     <string name="account_details">Thông tin chi tiết tài khoản</string>
     <string name="delete">Xóa</string>
     <string name="title_add_category">Thêm mới danh mục</string>
+    <string name="book_name">Tên sách:  </string>
+    <string name="author">Tác giả:  </string>
+    <string name="number">Số lượng:  </string>
+    <string name="number_page">Số trang:  </string>
+    <string name="publisher">Nhà xuất bản:  </string>
+    <string name="category">Danh mục:</string>
+    <string name="price">Đơn giá:</string>
+    <string name="new_book">Mới cập nhật</string>
+    <string name="view_all">Xem tất cả</string>
 </resources>

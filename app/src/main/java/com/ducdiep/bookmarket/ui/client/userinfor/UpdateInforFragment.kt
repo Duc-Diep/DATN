@@ -3,8 +3,6 @@ package com.ducdiep.bookmarket.ui.client.userinfor
 import android.Manifest
 import android.app.ProgressDialog
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -13,6 +11,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
@@ -36,6 +35,7 @@ import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.UploadTask
 import java.util.*
 
+
 class UpdateInforFragment : BaseFragment(R.layout.fragment_change_infor) {
     private val binding by viewBinding(FragmentChangeInforBinding::bind)
     private lateinit var userInforViewModel: UserInforViewModel
@@ -56,7 +56,8 @@ class UpdateInforFragment : BaseFragment(R.layout.fragment_change_infor) {
         dialog.setTitle("Đang tải")
         dialog.show()
         val storage = FirebaseStorage.getInstance()
-        val imageref = storage.reference.child("images/user_avatar/" + userInforViewModel.firebaseUser.value?.uid + ".jpg")
+        val imageref =
+            storage.reference.child("images/user_avatar/" + userInforViewModel.firebaseUser.value?.uid + ".jpg")
         val uploadTask = imageref.putFile(uri)
         uploadTask.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> { taskSnapshot ->
             dialog.dismiss()
@@ -160,18 +161,13 @@ class UpdateInforFragment : BaseFragment(R.layout.fragment_change_infor) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
             getImage.launch("image/*")
             return
-        }else{
+        } else {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
-                ActivityCompat.requestPermissions(
-                    requireActivity(), arrayOf(
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                    ),
-                    PERMISSION_REQUEST
-                )
+                mPermissionResult.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
             } else {
                 getImage.launch("image/*")
             }
@@ -179,34 +175,22 @@ class UpdateInforFragment : BaseFragment(R.layout.fragment_change_infor) {
 
     }
 
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        when (requestCode) {
-            PERMISSION_REQUEST -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(
-                        context,
-                        "Access permission read external success",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    getImage.launch("image/*")
-                } else {
-                    Toast.makeText(
-                        context,
-                        "Access permission read external denied",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+    private val mPermissionResult = registerForActivityResult(
+        RequestPermission()
+    ) { result ->
+        if (result) {
+            Toast.makeText(
+                context,
+                "Access permission read external success",
+                Toast.LENGTH_SHORT
+            ).show()
+            getImage.launch("image/*")
+        } else {
+            Toast.makeText(
+                context,
+                "Access permission read external denied",
+                Toast.LENGTH_SHORT
+            ).show()
         }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
-
-    companion object {
-        const val PERMISSION_REQUEST = 1
     }
 }

@@ -108,7 +108,6 @@ class ManageActivity : BaseActivity(R.layout.activity_manage),
             if (supportFragmentManager.backStackEntryCount > 1) {
                 Log.d("abcc", "${manageViewModel.stackFragment}")
                 if (manageViewModel.stackFragment.isNotEmpty()) {
-                    manageViewModel.stackFragment.removeLast()
                     when (manageViewModel.stackFragment.last()) {
                         KEY_MANAGE_BOOK -> {
                             idChecked = R.id.manage_books
@@ -127,6 +126,7 @@ class ManageActivity : BaseActivity(R.layout.activity_manage),
                             resetChecked()
                         }
                     }
+                    manageViewModel.stackFragment.removeLast()
                     supportFragmentManager.popBackStack()
                     Log.d("abcc", "${manageViewModel.stackFragment}")
                 }

@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="70dp"
         android:layout_height="match_parent">
+
         <TextView
             android:id="@+id/tv_remove"
             android:layout_width="match_parent"
@@ -21,21 +22,32 @@
             android:textSize="20dp" />
     </LinearLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/rl_body"
-        android:padding="@dimen/common_padding"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_category_name"
+        <RelativeLayout
+            android:id="@+id/rl_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Abcccccc"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:padding="@dimen/common_padding">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Abcccccc"
+                android:textColor="@color/black"
+                android:textSize="25dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+    </LinearLayout>
+
 
 </com.chauthai.swipereveallayout.SwipeRevealLayout>

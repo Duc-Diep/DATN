@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
+import android.widget.RelativeLayout
 import androidx.core.view.children
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -43,9 +44,7 @@ class UserInforFragment : BaseFragment(R.layout.fragment_user_infor) {
 
     fun unLogin() {
         binding.root.children.forEach {
-            if (it !is ProgressBar){
                 it.visibility = View.GONE
-            }
         }
         binding.tvIsLogin.visibility = View.VISIBLE
         binding.btnLogin.visibility = View.VISIBLE
@@ -53,10 +52,9 @@ class UserInforFragment : BaseFragment(R.layout.fragment_user_infor) {
 
     fun loggedIn() {
         binding.root.children.forEach {
-            if (it !is ProgressBar){
-                it.visibility = View.VISIBLE
-            }
+            it.visibility = View.VISIBLE
         }
+        binding.rlLoading.visibility = View.VISIBLE
         binding.tvIsLogin.visibility = View.GONE
         binding.btnLogin.visibility = View.GONE
     }
@@ -76,11 +74,11 @@ class UserInforFragment : BaseFragment(R.layout.fragment_user_infor) {
                 unLogin()
             }
         }
-        userInforViewModel.isLoading.observe(viewLifecycleOwner){
-            if (it){
-                binding.pbLoading.visibility = View.VISIBLE
-            }else{
-                binding.pbLoading.visibility = View.GONE
+        userInforViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.rlLoading.visibility = View.VISIBLE
+            } else {
+                binding.rlLoading.visibility = View.GONE
             }
         }
     }
@@ -103,7 +101,7 @@ class UserInforFragment : BaseFragment(R.layout.fragment_user_infor) {
             userInforViewModel.logout()
         }
         binding.layoutManage.setOnClickListener {
-            startActivity(Intent(context,ManageActivity::class.java))
+            startActivity(Intent(context, ManageActivity::class.java))
         }
     }
 

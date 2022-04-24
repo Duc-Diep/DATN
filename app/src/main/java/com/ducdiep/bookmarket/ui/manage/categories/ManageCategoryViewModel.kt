@@ -1,4 +1,4 @@
-package com.ducdiep.categorymarket.ui.manage.categories
+package com.ducdiep.bookmarket.ui.manage.categories
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,6 @@ class ManageCategoryViewModel:ViewModel() {
     var listCategories = MutableLiveData<ArrayList<Category>>()
     var data = FirebaseDatabase.getInstance().getReference(TABLE_CATEGORIES)
     var isLoading = MutableLiveData<Boolean>()
-    var categoryDetails = MutableLiveData<Category>()
 
     init {
         getAllCategories()
@@ -25,15 +24,16 @@ class ManageCategoryViewModel:ViewModel() {
         isLoading.value = true
         data.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                listCategories.value = ArrayList()
+                var listTemp = arrayListOf<Category>()
                 snapshot.children.forEach {
                     val category = it.getValue(Category::class.java)
                     Log.d("userr", "onDataChange: $category")
                     if (category != null) {
-                        listCategories.value?.add(category)
+                        listTemp.add(category)
                     }
                 }
                 Log.d("userr", "onDataChange: ${listCategories.value}")
+                listCategories.value = listTemp
                 isLoading.value = false
             }
 

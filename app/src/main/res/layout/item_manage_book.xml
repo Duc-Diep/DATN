@@ -23,41 +23,52 @@
             app:layout_constraintEnd_toEndOf="parent" />
     </LinearLayout>
 
-
-    <RelativeLayout
-        android:id="@+id/rl_body"
-        android:padding="@dimen/common_padding"
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/img_book_item"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:layout_marginEnd="@dimen/common_margin" />
-
-        <TextView
-            android:id="@+id/tv_book_name_item"
+        <RelativeLayout
+            android:id="@+id/rl_body"
+            android:padding="@dimen/common_padding"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/img_book_item"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Tên sách"
-            android:textSize="27dp"
-            android:layout_marginTop="@dimen/common_margin"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_book_price_item"
+            <ImageView
+                android:id="@+id/img_book_item"
+                android:scaleType="center"
+                android:layout_width="80dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="@dimen/common_margin" />
+
+            <TextView
+                android:id="@+id/tv_book_name_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/img_book_item"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Tên sách"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_book_price_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_book_name_item"
+                android:layout_toRightOf="@id/img_book_item"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Giá tiền"
+                android:textSize="15dp" />
+        </RelativeLayout>
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_book_name_item"
-            android:layout_toRightOf="@id/img_book_item"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="Giá tiền"
-            android:textSize="20dp" />
-    </RelativeLayout>
+            android:layout_height="1dp"
+            android:background="@color/grey"/>
+    </LinearLayout>
+
 
 </com.chauthai.swipereveallayout.SwipeRevealLayout>

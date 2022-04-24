@@ -16,7 +16,6 @@ import com.ducdiep.bookmarket.extensions.showDialogConfirm
 import com.ducdiep.bookmarket.extensions.showDialogInputUser
 import com.ducdiep.bookmarket.extensions.viewBinding
 import com.ducdiep.bookmarket.models.Category
-import com.ducdiep.categorymarket.ui.manage.categories.ManageCategoryViewModel
 
 class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
     private val binding by viewBinding(FragmentManageCategoryBinding::bind)
@@ -40,19 +39,26 @@ class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
     private fun initObserve() {
         manageCategoryViewModel = ViewModelProvider(this).get(ManageCategoryViewModel::class.java)
         manageCategoryViewModel.listCategories.observe(viewLifecycleOwner) {
-            if (it != null) {
+            if (it.isNotEmpty()) {
                 setupAdapter(it)
+            }
+        }
+        manageCategoryViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.pbLoading.visibility = View.VISIBLE
+            } else {
+                binding.pbLoading.visibility = View.GONE
             }
         }
     }
 
-    private fun setupAdapter(it: ArrayList<Category>) {
-        categoryAdapter = ManageCategoryAdapter(requireContext(), it, {
+    private fun setupAdapter(list: ArrayList<Category>) {
+        categoryAdapter = ManageCategoryAdapter(requireContext(), list, {
             Log.d("click", "setupAdapter: ")
             val id = it.category_id
-            context?.showDialogInputUser("Sửa danh mục", it.name) {
-                val hm = hashMapOf<String, Any>("name" to it)
-                manageCategoryViewModel.updateField(id, hm)
+            context?.showDialogInputUser("Sửa danh mục", it.name) { categoryName ->
+                manageCategoryViewModel.updateField(id, hashMapOf("name" to categoryName))
+                manageCategoryViewModel.updateField(id, hashMapOf("updated_at" to getTimeNow()))
             }
         }, {
             context?.showDialogConfirm(
@@ -67,7 +73,6 @@ class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
         binding.rcvManageCategory.apply {
             adapter = categoryAdapter
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(context, RecyclerView.VERTICAL))
         }
     }
 }

@@ -10,6 +10,7 @@ import com.ducdiep.bookmarket.R
 import com.ducdiep.bookmarket.base.BaseFragment
 import com.ducdiep.bookmarket.base.KEY_MANAGE_ACCOUNT
 import com.ducdiep.bookmarket.databinding.FragmentManageAccountBinding
+import com.ducdiep.bookmarket.extensions.getTimeNow
 import com.ducdiep.bookmarket.extensions.showAlertDialog
 import com.ducdiep.bookmarket.extensions.viewBinding
 import com.ducdiep.bookmarket.models.User
@@ -46,27 +47,38 @@ class ManageAccountFragment : BaseFragment(R.layout.fragment_manage_account) {
     }
 
     fun setupAdapter(list: List<User>) {
-        accountAdapter = ManageAccountAdapter(requireContext(), list, { id, active ->
-            if (active == 0) {
-                context?.showAlertDialog("Xác nhận", "Bạn có muốn mở khóa tài khoản này không") {
-                    val hm = hashMapOf<String, Any>("active" to 1)
-                    manageAccountViewModel.updateField(id, hm)
+        context?.let {
+            accountAdapter = ManageAccountAdapter(it, list, { id, active ->
+                if (active == 0) {
+                    context?.showAlertDialog(
+                        "Xác nhận",
+                        "Bạn có muốn mở khóa tài khoản này không"
+                    ) {
+                        manageAccountViewModel.updateField(id, hashMapOf("active" to 1))
+                        manageAccountViewModel.updateField(
+                            id,
+                            hashMapOf("updated_at" to getTimeNow())
+                        )
+                    }
+                } else {
+                    context?.showAlertDialog("Xác nhận", "Bạn có muốn khóa tài khoản này không") {
+                        manageAccountViewModel.updateField(id, hashMapOf("active" to 0))
+                        manageAccountViewModel.updateField(
+                            id,
+                            hashMapOf("updated_at" to getTimeNow())
+                        )
+                    }
                 }
-            } else {
-                context?.showAlertDialog("Xác nhận", "Bạn có muốn khóa tài khoản này không") {
-                    val hm = hashMapOf<String, Any>("active" to 0)
-                    manageAccountViewModel.updateField(id, hm)
-                }
-            }
-        }, {
-            (context as ManageActivity).setCurrentFragment(AccountDetailsFragment.newInstance(it))
-            (context as ManageActivity).manageViewModel.stackFragment.add(KEY_MANAGE_ACCOUNT)
-        })
+            }, {
+                (context as ManageActivity).setCurrentFragment(AccountDetailsFragment.newInstance(it))
+                (context as ManageActivity).manageViewModel.stackFragment.add(KEY_MANAGE_ACCOUNT)
+            })
 
-        binding.rcvManageAccount.apply {
-            adapter = accountAdapter
-            addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            binding.rcvManageAccount.apply {
+                adapter = accountAdapter
+                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            }
         }
+
     }
 }

@@ -6,13 +6,6 @@
     android:background="@color/backgr_home"
     android:orientation="vertical">
 
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:layout_width="40dp"
-        android:layout_height="40dp" />
-
     <TextView
         android:id="@+id/tv_is_login"
         android:layout_width="wrap_content"
@@ -24,7 +17,7 @@
 
     </TextView>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_pic"
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -32,7 +25,7 @@
         android:orientation="vertical"
         android:visibility="visible">
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/civ_avatar"
@@ -203,7 +196,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/layout_btn_login"
-        android:text="@string/sign_in">
+        android:text="@string/sign_in" />
 
-    </androidx.appcompat.widget.AppCompatButton>
+    <RelativeLayout
+        android:id="@+id/rl__loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true">
+
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+    </RelativeLayout>
 </RelativeLayout>

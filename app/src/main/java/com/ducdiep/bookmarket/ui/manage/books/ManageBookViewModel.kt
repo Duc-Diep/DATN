@@ -20,21 +20,23 @@ class ManageBookViewModel : ViewModel() {
 
     init {
         getAllBooks()
+        getLastKey()
     }
 
     private fun getAllBooks() {
         isLoading.value = true
         data.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                listBooks.value = ArrayList()
+                var listTemp = arrayListOf<Book>()
                 snapshot.children.forEach {
                     val book = it.getValue(Book::class.java)
                     Log.d("userr", "onDataChange: $book")
                     if (book != null) {
-                        listBooks.value?.add(book)
+                        listTemp.add(book)
                     }
                 }
                 Log.d("userr", "onDataChange: ${listBooks.value}")
+                listBooks.value = listTemp
                 isLoading.value = false
             }
 
@@ -62,5 +64,38 @@ class ManageBookViewModel : ViewModel() {
 
     fun removeById(id:String){
         data.child(id).removeValue()
+    }
+
+    fun addBook(book: Book){
+        val hm = HashMap<String,Any>()
+        hm["author"] = book.author
+        hm["book_id"] = book.book_id
+        hm["category_id"] = book.category_id
+        hm["created_at"] = book.created_at
+        hm["current_number"] = book.current_number
+        hm["description"] = book.description
+        hm["image"] = book.image
+        hm["name"] = book.name
+        hm["num_of_page"] = book.num_of_page
+        hm["price"] = book.price
+        hm["publisher"] = book.publisher
+        hm["updated_at"] = book.updated_at
+        data.push().setValue(hm)
+    }
+
+    fun getLastKey(){
+        data.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lastKey = snapshot.children.last().key.toString()
+                val newId = hashMapOf<String,Any>("book_id" to lastKey)
+                data.child(lastKey).updateChildren(newId)
+                Log.d("key", "onDataChange: $lastKey")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
     }
 }

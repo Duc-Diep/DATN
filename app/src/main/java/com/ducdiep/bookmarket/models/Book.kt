@@ -1,5 +1,7 @@
 package com.ducdiep.bookmarket.models
 
+import java.io.Serializable
+
 data class Book(
     val author: String = "",
     val book_id: String = "",
@@ -13,4 +15,4 @@ data class Book(
     val price: Long = 0,
     val publisher: String = "",
     val updated_at: String = ""
-)
+) : Serializable
