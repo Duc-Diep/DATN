@@ -22,33 +22,14 @@ class ManageAccountFragment : BaseFragment(R.layout.fragment_manage_account) {
     lateinit var accountAdapter: ManageAccountAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         initListener()
         initObserve()
     }
 
-    private fun initListener() {
-
-    }
-
-    private fun initObserve() {
-        manageAccountViewModel = ViewModelProvider(this).get(ManageAccountViewModel::class.java)
-        manageAccountViewModel.listUser.observe(viewLifecycleOwner) {
-            if (it != null) {
-                setupAdapter(it as List<User>)
-            }
-        }
-        manageAccountViewModel.isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                binding.pbLoading.visibility = View.VISIBLE
-            } else {
-                binding.pbLoading.visibility = View.GONE
-            }
-        }
-    }
-
-    fun setupAdapter(list: List<User>) {
+    private fun initViews() {
         context?.let {
-            accountAdapter = ManageAccountAdapter(it, list, { id, active ->
+            accountAdapter = ManageAccountAdapter(it, listOf(), { id, active ->
                 if (active == 0) {
                     context?.showAlertDialog(
                         "Xác nhận",
@@ -76,9 +57,27 @@ class ManageAccountFragment : BaseFragment(R.layout.fragment_manage_account) {
 
             binding.rcvManageAccount.apply {
                 adapter = accountAdapter
-                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                addItemDecoration(DividerItemDecoration(it, RecyclerView.VERTICAL))
             }
         }
+    }
+
+    private fun initListener() {
 
     }
+
+    private fun initObserve() {
+        manageAccountViewModel = ViewModelProvider(this).get(ManageAccountViewModel::class.java)
+        manageAccountViewModel.listUser.observe(viewLifecycleOwner) {
+            accountAdapter.setData(it)
+        }
+        manageAccountViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.pbLoading.visibility = View.VISIBLE
+            } else {
+                binding.pbLoading.visibility = View.GONE
+            }
+        }
+    }
+
 }

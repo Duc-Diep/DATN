@@ -9,8 +9,8 @@
         android:id="@+id/img_back"
         android:layout_width="?attr/actionBarSize"
         android:layout_height="?attr/actionBarSize"
-        android:padding="10dp"
-        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:padding="15dp"
+        android:src="@drawable/back"
         app:tint="@color/white" />
 
     <TextView
@@ -22,4 +22,12 @@
         android:textColor="@color/white"
         android:textSize="25dp"
         android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/img_search"
+        android:layout_width="?attr/actionBarSize"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="10dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_search"
+        app:tint="@color/white" />
 </RelativeLayout>

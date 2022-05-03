@@ -27,15 +27,12 @@ class ManageAccountViewModel : ViewModel() {
         data.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var listTemp = arrayListOf<User>()
-
                 snapshot.children.forEach {
                     val user = it.getValue(User::class.java)
-                    Log.d("userr", "onDataChange: $user")
                     if (user != null && user.user_id != firebaseUser?.uid) {
                         listTemp.add(user)
                     }
                 }
-                Log.d("userr", "onDataChange: ${listUser.value}")
                 listUser.value = listTemp
                 isLoading.value = false
             }

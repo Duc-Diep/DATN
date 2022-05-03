@@ -1,4 +1,4 @@
-package com.ducdiep.bookmarket.ui.client.home
+package com.ducdiep.bookmarket.ui.client.home.adapter
 
 import com.ducdiep.bookmarket.models.Book
 

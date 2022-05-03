@@ -47,4 +47,9 @@ class ManageBookAdapter(
     override fun getItemCount(): Int {
         return listBooks.size
     }
+
+    fun setData(listBooks: List<Book>){
+        this.listBooks = listBooks.reversed()
+        notifyDataSetChanged()
+    }
 }

@@ -23,8 +23,34 @@ class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
     lateinit var categoryAdapter: ManageCategoryAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         initObserve()
         initListener()
+    }
+
+    private fun initViews() {
+        context?.let { ct ->
+            categoryAdapter = ManageCategoryAdapter(ct, listOf(), {
+                val id = it.category_id
+                context?.showDialogInputUser("Sửa danh mục", it.name) { categoryName ->
+                    manageCategoryViewModel.updateField(id, hashMapOf("name" to categoryName))
+                    manageCategoryViewModel.updateField(id, hashMapOf("updated_at" to getTimeNow()))
+                }
+            }, {
+                context?.showDialogConfirm(
+                    "Bạn có chắc chắn muốn xóa sản phẩm này không?",
+                    "Đồng ý",
+                    "Hủy bỏ"
+                ) {
+                    manageCategoryViewModel.removeById(it.category_id)
+                }
+            })
+
+            binding.rcvManageCategory.apply {
+                adapter = categoryAdapter
+                addItemDecoration(DividerItemDecoration(ct,RecyclerView.VERTICAL))
+            }
+        }
     }
 
     private fun initListener() {
@@ -39,9 +65,7 @@ class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
     private fun initObserve() {
         manageCategoryViewModel = ViewModelProvider(this).get(ManageCategoryViewModel::class.java)
         manageCategoryViewModel.listCategories.observe(viewLifecycleOwner) {
-            if (it.isNotEmpty()) {
-                setupAdapter(it)
-            }
+            categoryAdapter.setData(it)
         }
         manageCategoryViewModel.isLoading.observe(viewLifecycleOwner) {
             if (it) {
@@ -53,26 +77,6 @@ class ManageCategoryFragment : BaseFragment(R.layout.fragment_manage_category) {
     }
 
     private fun setupAdapter(list: ArrayList<Category>) {
-        categoryAdapter = ManageCategoryAdapter(requireContext(), list, {
-            Log.d("click", "setupAdapter: ")
-            val id = it.category_id
-            context?.showDialogInputUser("Sửa danh mục", it.name) { categoryName ->
-                manageCategoryViewModel.updateField(id, hashMapOf("name" to categoryName))
-                manageCategoryViewModel.updateField(id, hashMapOf("updated_at" to getTimeNow()))
-            }
-        }, {
-            context?.showDialogConfirm(
-                "Bạn có chắc chắn muốn xóa sản phẩm này không?",
-                "Đồng ý",
-                "Hủy bỏ"
-            ) {
-                manageCategoryViewModel.removeById(it.category_id)
-            }
-        })
 
-        binding.rcvManageCategory.apply {
-            adapter = categoryAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        }
     }
 }

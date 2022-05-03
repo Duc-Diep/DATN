@@ -27,12 +27,10 @@ class ManageCategoryViewModel:ViewModel() {
                 var listTemp = arrayListOf<Category>()
                 snapshot.children.forEach {
                     val category = it.getValue(Category::class.java)
-                    Log.d("userr", "onDataChange: $category")
                     if (category != null) {
                         listTemp.add(category)
                     }
                 }
-                Log.d("userr", "onDataChange: ${listCategories.value}")
                 listCategories.value = listTemp
                 isLoading.value = false
             }
@@ -62,7 +60,6 @@ class ManageCategoryViewModel:ViewModel() {
                 val lastKey = snapshot.children.last().key.toString()
                 val newId = hashMapOf<String,Any>("category_id" to lastKey)
                 data.child(lastKey).updateChildren(newId)
-                Log.d("key", "onDataChange: $lastKey")
             }
 
             override fun onCancelled(error: DatabaseError) {

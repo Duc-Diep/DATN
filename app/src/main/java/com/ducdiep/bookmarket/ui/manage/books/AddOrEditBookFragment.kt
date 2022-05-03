@@ -281,7 +281,6 @@ class AddOrEditBookFragment : BaseFragment(R.layout.fragment_add_or_edit_book) {
                     (context as ManageActivity).onBackPressed()
                 }
 
-                Log.d("TAG", "onSuccess: $uri")
             }
         }).addOnProgressListener(OnProgressListener<UploadTask.TaskSnapshot> { snapshot ->
             val percent = (100 * snapshot.bytesTransferred / snapshot.totalByteCount).toFloat()

@@ -22,37 +22,14 @@ class ManageBookFragment : BaseFragment(R.layout.fragment_manage_book) {
     lateinit var bookAdapter: ManageBookAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         initObserve()
         initListener()
     }
 
-    private fun initListener() {
-        binding.btnAddBook.setOnClickListener {
-            (context as ManageActivity).setCurrentFragment(AddOrEditBookFragment.newInstance(null))
-            (context as ManageActivity).manageViewModel.stackFragment.add(KEY_MANAGE_BOOK)
-        }
-    }
-
-    private fun initObserve() {
-        manageBookViewModel = ViewModelProvider(this).get(ManageBookViewModel::class.java)
-        manageBookViewModel.listBooks.observe(viewLifecycleOwner) {
-            if (it != null) {
-                setupAdapter(it)
-            }
-        }
-        manageBookViewModel.isLoading.observe(viewLifecycleOwner) {
-            if (it) {
-                binding.pbLoading.visibility = View.VISIBLE
-            } else {
-                binding.pbLoading.visibility = View.GONE
-            }
-        }
-
-    }
-
-    private fun setupAdapter(listData: ArrayList<Book>) {
-        context?.let {
-            bookAdapter = ManageBookAdapter(it, listData, {
+    private fun initViews() {
+        context?.let { ct ->
+            bookAdapter = ManageBookAdapter(ct, listOf(), {
                 context?.showDialogConfirm(
                     "Bạn có chắc chắn muốn xóa sản phẩm này không?",
                     "Đồng ý",
@@ -66,7 +43,28 @@ class ManageBookFragment : BaseFragment(R.layout.fragment_manage_book) {
             })
             binding.rcvManageBooks.apply {
                 adapter = bookAdapter
-                layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+                addItemDecoration(DividerItemDecoration(ct,RecyclerView.VERTICAL))
+            }
+        }
+    }
+
+    private fun initListener() {
+        binding.btnAddBook.setOnClickListener {
+            (context as ManageActivity).setCurrentFragment(AddOrEditBookFragment.newInstance(null))
+            (context as ManageActivity).manageViewModel.stackFragment.add(KEY_MANAGE_BOOK)
+        }
+    }
+
+    private fun initObserve() {
+        manageBookViewModel = ViewModelProvider(this).get(ManageBookViewModel::class.java)
+        manageBookViewModel.listBooks.observe(viewLifecycleOwner) {
+            bookAdapter.setData(it)
+        }
+        manageBookViewModel.isLoading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.pbLoading.visibility = View.VISIBLE
+            } else {
+                binding.pbLoading.visibility = View.GONE
             }
         }
     }

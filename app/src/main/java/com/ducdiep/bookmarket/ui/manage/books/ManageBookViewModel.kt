@@ -30,12 +30,10 @@ class ManageBookViewModel : ViewModel() {
                 var listTemp = arrayListOf<Book>()
                 snapshot.children.forEach {
                     val book = it.getValue(Book::class.java)
-                    Log.d("userr", "onDataChange: $book")
                     if (book != null) {
                         listTemp.add(book)
                     }
                 }
-                Log.d("userr", "onDataChange: ${listBooks.value}")
                 listBooks.value = listTemp
                 isLoading.value = false
             }
@@ -89,7 +87,6 @@ class ManageBookViewModel : ViewModel() {
                 val lastKey = snapshot.children.last().key.toString()
                 val newId = hashMapOf<String,Any>("book_id" to lastKey)
                 data.child(lastKey).updateChildren(newId)
-                Log.d("key", "onDataChange: $lastKey")
             }
 
             override fun onCancelled(error: DatabaseError) {

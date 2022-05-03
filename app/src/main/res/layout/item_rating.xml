@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:padding="@dimen/common_padding">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="@dimen/common_margin"/>
+
+    <TextView
+        android:id="@+id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/img_avatar"
+        android:text="Đức Điệp"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+    <RatingBar
+        android:id="@+id/rb_star"
+        android:layout_width="240dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:numStars="5"
+        android:rating="5"
+        android:scaleX="0.3"
+        android:scaleY="0.3" />
+    <TextView
+        android:id="@+id/tv_comment"
+        android:layout_toEndOf="@id/img_avatar"
+        android:layout_alignParentBottom="true"
+        android:text="Hay quá"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

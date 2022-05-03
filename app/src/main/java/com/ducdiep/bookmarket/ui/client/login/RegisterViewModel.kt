@@ -19,7 +19,6 @@ class RegisterViewModel : ViewModel() {
         auth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener {
             if (it.isSuccessful) {
                 val firebaseUser = auth.currentUser
-                Log.d("abcc", "user: ${firebaseUser.toString()}")
                 val newUser = user
                 newUser.user_id = firebaseUser?.uid.toString()
                 newUser.password = createInvisiblePassword(user.password.length)

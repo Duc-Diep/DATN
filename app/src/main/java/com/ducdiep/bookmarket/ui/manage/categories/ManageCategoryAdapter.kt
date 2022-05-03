@@ -34,7 +34,7 @@ class ManageCategoryAdapter(
         holder.binding.tvRemove.setOnClickListener {
             callbackRemove.invoke(listCategory[holder.adapterPosition])
         }
-        holder.binding.rlBody.setOnClickListener{
+        holder.binding.rlBody.setOnClickListener {
             callbackClickItem.invoke(listCategory[holder.adapterPosition])
         }
     }
@@ -45,5 +45,10 @@ class ManageCategoryAdapter(
 
     override fun getItemCount(): Int {
         return listCategory.size
+    }
+
+    fun setData(listCategory: List<Category>) {
+        this.listCategory = listCategory.reversed()
+        notifyDataSetChanged()
     }
 }

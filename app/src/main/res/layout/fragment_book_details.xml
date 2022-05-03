@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="10dp"
+                android:src="@drawable/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_book_big_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:alpha="0.3"
+                android:scaleType="center"
+                android:src="@drawable/book_bgr"
+                app:layout_constraintTop_toTopOf="parent" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/img_book_image"
+            android:layout_width="140dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-90dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/book_bgr" />
+
+        <TextView
+            android:id="@+id/tv_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:paddingHorizontal="@dimen/common_padding"
+            android:text="Doraemon và những người bạn"
+            android:textSize="25dp"
+            app:layout_constraintTop_toBottomOf="@id/img_book_image" />
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/description" />
+
+        <RatingBar
+            android:id="@+id/rb_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:numStars="5"
+            android:rating="5"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
+
+        <View
+            android:id="@+id/v_divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/rb_star" />
+
+        <TextView
+            android:id="@+id/tv_price_real"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:padding="5dp"
+            android:textColor="@color/red"
+            android:paddingStart="10dp"
+            android:text="Giá gốc: 1000000đ"
+            app:layout_constraintTop_toBottomOf="@id/v_divider_1" />
+
+        <TextView
+            android:id="@+id/tv_price_discount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/blue_teal"
+            android:text="Giá bán: 900000đ"
+            android:paddingStart="10dp"
+
+            app:layout_constraintTop_toBottomOf="@id/tv_price_real" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/green"
+            android:text="Trạng thái: Còn hàng"
+            android:paddingStart="10dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_price_discount" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_add_to_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/common_margin"
+            android:layout_marginTop="@dimen/common_margin"
+            android:background="@drawable/layout_btn_login"
+            android:text="Thêm vào giỏ hàng"
+            app:layout_constraintTop_toBottomOf="@id/tv_status" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/common_margin"
+            android:background="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/btn_add_to_cart" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:text="Thông tin sách"
+            android:textSize="25dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Tác giả" />
+
+            <TextView
+                android:id="@+id/tv_authorr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:padding="5dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Nhà xuất bản" />
+
+            <TextView
+                android:id="@+id/tv_publisher"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:padding="5dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Ngày phát hành" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:padding="5dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:paddingStart="10dp"
+                android:text="Số trang" />
+
+            <TextView
+                android:id="@+id/tv_num_of_page"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="6"
+                android:padding="5dp"
+                android:text="" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginVertical="@dimen/common_margin"
+            android:background="@color/grey"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:text="Giới thiệu sách"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:padding="5dp"
+            android:paddingStart="10dp"
+            android:text="sdjhfgvonagopiasbngiougnboeirhgbneosiuynboesiuyoesiynb[seiunbsuyusepyn" />
+
+        <TextView
+            android:id="@+id/tv_more"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/more"
+            android:textColor="@color/blue_teal" />
+
+        <View
+            android:background="@color/grey"
+            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Có thể bạn sẽ thích"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="25dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_recommend_book"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+        <View
+            android:background="@color/grey"
+            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:text="Đánh giá"
+            android:textSize="25dp" />
+
+        <RatingBar
+            android:id="@+id/rb_star_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:numStars="5" />
+
+        <EditText
+            android:id="@+id/edt_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Viết bình luận của bạn tại đây"
+            android:layout_marginBottom="@dimen/common_margin"
+            android:paddingHorizontal="10dp" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/common_margin"
+            android:background="@drawable/layout_btn_login"
+            android:text="Gửi đánh giá"
+            app:layout_constraintTop_toBottomOf="@id/tv_status" />
+
+        <View
+            android:background="@color/grey"
+            android:layout_marginVertical="@dimen/common_margin"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="200dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

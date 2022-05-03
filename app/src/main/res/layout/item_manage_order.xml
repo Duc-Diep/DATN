@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_body"
+    android:padding="@dimen/common_padding">
+
+    <TextView
+        android:id="@+id/tv_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đơn hàng: "
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_order_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/tv_order"
+        android:text="#2352345"
+        android:textColor="#4DFF03"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_time_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order"
+        android:text="Thời gian: "
+        android:textSize="20dp" />
+
+    <Spinner
+        android:id="@+id/sp_status_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_order"
+        android:layout_toEndOf="@id/tv_time_order"
+        android:text="Trạng thái: " />
+</RelativeLayout>

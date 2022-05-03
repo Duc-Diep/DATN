@@ -1,4 +1,4 @@
-package com.ducdiep.bookmarket.ui.client.home
+package com.ducdiep.bookmarket.ui.client.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -19,20 +19,20 @@ class SlideAdapter(var context: Context, var list: List<SlideModel>, var callbac
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SlideAdapter.SlideViewHolder {
+    ): SlideViewHolder {
         val binding = ItemSlideBinding.inflate(LayoutInflater.from(context),parent,false)
         val holder = SlideViewHolder(binding)
         initListener(holder)
         return holder
     }
 
-    private fun initListener(holder: SlideAdapter.SlideViewHolder) {
+    private fun initListener(holder: SlideViewHolder) {
         holder.binding.imgSlide.setOnClickListener {
             callback.invoke(list[holder.adapterPosition].book)
         }
     }
 
-    override fun onBindViewHolder(holder: SlideAdapter.SlideViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SlideViewHolder, position: Int) {
         holder.onBind(list[position])
     }
 

@@ -12,7 +12,6 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
@@ -63,7 +62,6 @@ class UpdateInforFragment : BaseFragment(R.layout.fragment_change_infor) {
             dialog.dismiss()
             val downloadUri = taskSnapshot.storage.downloadUrl.addOnSuccessListener { uri ->
                 updateImage(uri)
-                Log.d("TAG", "onSuccess: $uri")
             }
         }).addOnProgressListener(OnProgressListener<UploadTask.TaskSnapshot> { snapshot ->
             val percent = (100 * snapshot.bytesTransferred / snapshot.totalByteCount).toFloat()

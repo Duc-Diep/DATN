@@ -15,12 +15,16 @@
         <activity android:name=".ui.client.login.LoginActivity" />
         <activity android:name=".ui.client.login.ForgotPasswordActivity" />
         <activity android:name=".ui.manage.ManageActivity" />
-        <activity android:name=".ui.client.main.MainActivity">
+        <activity android:name=".ui.splash.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.client.main.MainActivity"
+            android:windowSoftInputMode="adjustNothing">
+
         </activity>
     </application>
 

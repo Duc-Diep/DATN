@@ -22,3 +22,13 @@ const val KEY_MANAGE_BOOK = "ManageBook"
 const val KEY_MANAGE_ACCOUNT = "ManageAccount"
 const val KEY_MANAGE_CATEGORY = "ManageCategory"
 const val KEY_MANAGE_ORDER = "ManageOrder"
+
+const val ID_COMIC = "-N-sF_PbrBKukG7xqN7h"
+const val ID_ECONOMIC = "-N-sHR7NbWdmeHnDRBiz"
+const val ID_LITERATURE = "-N-wuaIHcLBGcFARfnsL"
+const val ID_CHILDREN = "-N-wuccnVIZzm401qkcR"
+const val ID_FOREIGN = "-N0OMvHN0gSYIMs8CyRQ"
+
+const val STATUS_WAITING = 0
+const val STATUS_SHIPPED = 1
+const val STATUS_RECEIVED = 2

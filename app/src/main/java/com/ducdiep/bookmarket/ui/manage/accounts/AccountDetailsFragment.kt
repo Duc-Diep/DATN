@@ -21,9 +21,7 @@ class AccountDetailsFragment : BaseFragment(R.layout.fragment_account_details) {
     }
 
     private fun initListener() {
-        binding.btnBack.setOnClickListener {
-            (context as ManageActivity).onBackPressed()
-        }
+
     }
 
     private fun initObserve() {

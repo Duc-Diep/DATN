@@ -10,11 +10,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.ducdiep.bookmarket.R
+import com.ducdiep.bookmarket.base.TABLE_USERS
 import com.ducdiep.bookmarket.databinding.LayoutDialogChangePassBinding
+import com.ducdiep.bookmarket.databinding.LayoutDialogConfirmBinding
 import com.ducdiep.bookmarket.databinding.LayoutDialogUserBinding
+import com.ducdiep.bookmarket.models.User
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 
 fun Context.showDialogChangePass() {
@@ -170,6 +174,38 @@ fun Context.showDialogInputUser(
     }
     binding.tvDialogDone.setOnClickListener {
         doneClickCallBack(binding.edtDialogInput.text.toString())
+        dialog.dismiss()
+    }
+    dialog.show()
+}
+
+
+fun Context.showDialogConfirmOrder(user: User, callback: () -> Unit) {
+    val binding = LayoutDialogConfirmBinding.inflate(LayoutInflater.from(this))
+    val builder = AlertDialog.Builder(this).apply {
+        setView(binding.root)
+    }
+    val dialog = builder.create().apply {
+        setCanceledOnTouchOutside(false)
+    }
+    binding.edtAddress.setText(user.address)
+    binding.edtFullName.setText(user.full_name)
+    binding.edtPhone.setText(user.phone)
+
+    var firebaseUser = FirebaseAuth.getInstance().currentUser
+    val data =
+        FirebaseDatabase.getInstance().getReference(TABLE_USERS).child(firebaseUser?.uid.toString())
+    binding.btnCancel.setOnClickListener {
+        dialog.dismiss()
+    }
+    binding.btnConfirm.setOnClickListener {
+        val hmPhone = hashMapOf<String, Any>("phone" to binding.edtPhone.text.toString())
+        val hmName = hashMapOf<String, Any>("full_name" to binding.edtFullName.text.toString())
+        val hmAddress = hashMapOf<String, Any>("address" to binding.edtAddress.text.toString())
+        data.updateChildren(hmAddress)
+        data.updateChildren(hmPhone)
+        data.updateChildren(hmName)
+        callback.invoke()
         dialog.dismiss()
     }
     dialog.show()

@@ -75,7 +75,7 @@
     <string name="introduce">Giới thiệu</string>
     <string name="phone_introduce">0981206317</string>
     <string name="gender">Giới tính: </string>
-    <string name="vinabook">Vinabook</string>
+    <string name="megabook">MegaBook</string>
     <string name="hotline">Hotline: 098206317</string>
     <string name="infor_custome">Thông tin cá nhân</string>
     <string name="manage_order">Quản lý đơn hàng</string>
@@ -99,4 +99,8 @@
     <string name="price">Đơn giá:</string>
     <string name="new_book">Mới cập nhật</string>
     <string name="view_all">Xem tất cả</string>
+    <string name="comic">Truyện tranh mới nhất</string>
+    <string name="economic">Sách kinh tế mới nhất</string>
+    <string name="more">Xem thêm</string>
+    <string name="unmore">Thu gọn</string>
 </resources>

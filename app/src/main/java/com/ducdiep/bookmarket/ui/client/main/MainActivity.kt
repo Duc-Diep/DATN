@@ -54,20 +54,28 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
         when (item.itemId) {
             R.id.homeFragment -> {
-                setCurrentFragment(HomeFragment())
-                mainViewModel.stackFragment.add(KEY_HOME_FRAGMENT)
+                if (idChecked != R.id.homeFragment) {
+                    setCurrentFragment(HomeFragment())
+                    mainViewModel.stackFragment.add(KEY_HOME_FRAGMENT)
+                }
             }
             R.id.categoryFragment -> {
-                setCurrentFragment(CategoryFragment())
-                mainViewModel.stackFragment.add(KEY_CATEGORY_FRAGMENT)
+                if (idChecked != R.id.categoryFragment) {
+                    setCurrentFragment(CategoryFragment())
+                    mainViewModel.stackFragment.add(KEY_CATEGORY_FRAGMENT)
+                }
             }
             R.id.cartFragment -> {
-                setCurrentFragment(CartFragment())
-                mainViewModel.stackFragment.add(KEY_CART_FRAGMENT)
+                if (idChecked != R.id.cartFragment) {
+                    setCurrentFragment(CartFragment())
+                    mainViewModel.stackFragment.add(KEY_CART_FRAGMENT)
+                }
             }
             R.id.userInforFragment -> {
-                setCurrentFragment(UserInforFragment())
-                mainViewModel.stackFragment.add(KEY_USER_INFOR_FRAGMENT)
+                if (idChecked != R.id.userInforFragment) {
+                    setCurrentFragment(UserInforFragment())
+                    mainViewModel.stackFragment.add(KEY_USER_INFOR_FRAGMENT)
+                }
             }
             else -> item.itemId
         }
@@ -77,22 +85,32 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             val menuItem = binding.bottomNavi.menu.getItem(i)
             if (menuItem.itemId == idChecked) menuItem.isChecked = true
         }
-        Log.d("abcc", "${mainViewModel.stackFragment}")
     }
 
     override fun onBackPressed() {
-        Log.d("abcc", "onBackPressed: ${supportFragmentManager.backStackEntryCount}")
         if (supportFragmentManager.backStackEntryCount > 1) {
             if (mainViewModel.stackFragment.isNotEmpty()) {
                 mainViewModel.stackFragment.removeLast()
                 when (mainViewModel.stackFragment.last()) {
-                    KEY_HOME_FRAGMENT -> binding.bottomNavi.menu.getItem(0).isChecked = true
-                    KEY_CATEGORY_FRAGMENT -> binding.bottomNavi.menu.getItem(1).isChecked = true
-                    KEY_CART_FRAGMENT -> binding.bottomNavi.menu.getItem(2).isChecked = true
-                    KEY_USER_INFOR_FRAGMENT -> binding.bottomNavi.menu.getItem(3).isChecked = true
+                    KEY_HOME_FRAGMENT -> {
+                        binding.bottomNavi.menu.getItem(0).isChecked = true
+                        idChecked = R.id.homeFragment
+                    }
+                    KEY_CATEGORY_FRAGMENT -> {
+                        binding.bottomNavi.menu.getItem(1).isChecked = true
+                        idChecked = R.id.categoryFragment
+                    }
+                    KEY_CART_FRAGMENT -> {
+                        binding.bottomNavi.menu.getItem(2).isChecked = true
+                        idChecked = R.id.cartFragment
+                    }
+                    KEY_USER_INFOR_FRAGMENT -> {
+                        binding.bottomNavi.menu.getItem(3).isChecked = true
+                        idChecked = R.id.userInforFragment
+                    }
+
                 }
                 supportFragmentManager.popBackStack()
-                Log.d("abcc", "${mainViewModel.stackFragment}")
             }
         } else {
             val dialog = AlertDialog.Builder(this)

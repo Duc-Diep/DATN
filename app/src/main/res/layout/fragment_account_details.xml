@@ -7,33 +7,18 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="@dimen/common_margin"
-        android:layout_marginTop="@dimen/common_margin"
-        android:layout_marginEnd="@dimen/common_margin"
-        android:layout_marginBottom="@dimen/common_margin"
-        android:text="@string/account_details"
-        android:textSize="22dp">
-
-    </TextView>
-
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_margin="@dimen/common_margin"
-        android:src="@drawable/ic_baseline_arrow_back_24"
-        app:tint="@color/black" />
+    <com.ducdiep.bookmarket.ui.widget.ToolbarCustom
+        android:id="@+id/tb_user_details"
+        app:title="@string/account_details"
+        app:is_show_back_button="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_avatar_user"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_below="@id/tv_title"
+        android:layout_below="@id/tb_user_details"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 

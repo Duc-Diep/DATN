@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ducdiep.bookmarket.ui.widget.ToolbarCustom
+        android:id="@+id/tb_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:is_show_back_button="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/bgr_search_view">
+        <ImageView
+            android:src="@drawable/ic_search"
+            android:padding="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <EditText
+            android:id="@+id/edt_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"/>
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_search"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

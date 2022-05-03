@@ -32,13 +32,11 @@ class UserInforViewModel : ViewModel() {
     private fun getUserInfor() {
         if (firebaseUser != null) {
             isLoading.value = true
-            Log.d("abcc", "getUserInfor: ${firebaseUser.value?.uid.toString()}")
             FirebaseDatabase.getInstance().getReference(TABLE_USERS)
                 .child(firebaseUser.value?.uid.toString())
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         userLiveData.value = snapshot.getValue(User::class.java)
-                        Log.d("abcc", "onDataChange: ${snapshot.getValue(User::class.java)}")
                         isLoading.value = false
                     }
 

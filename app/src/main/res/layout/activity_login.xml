@@ -15,7 +15,7 @@
         android:layout_above="@id/tv_login"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp"
-        android:text="@string/vinabook"
+        android:text="@string/megabook"
         android:textColor="#2396A5"
         android:textSize="50dp"
         android:textStyle="bold" />

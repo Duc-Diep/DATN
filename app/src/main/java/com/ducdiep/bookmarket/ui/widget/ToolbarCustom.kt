@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.RelativeLayout
 import com.ducdiep.bookmarket.R
+import com.ducdiep.bookmarket.base.KEY_HOME_FRAGMENT
 import com.ducdiep.bookmarket.databinding.LayoutToolbarBinding
 import com.ducdiep.bookmarket.extensions.viewBinding
 import com.ducdiep.bookmarket.ui.client.main.MainActivity
+import com.ducdiep.bookmarket.ui.client.search.SearchFragment
 
 class ToolbarCustom : RelativeLayout {
     private val binding by viewBinding(LayoutToolbarBinding::bind)
@@ -36,11 +38,20 @@ class ToolbarCustom : RelativeLayout {
         binding.imgBack.setOnClickListener {
             (context as MainActivity).onBackPressed()
         }
+        binding.imgSearch.setOnClickListener {
+            (context as MainActivity).setCurrentFragment(SearchFragment.newInstance("Tìm kiếm",""))
+            (context as MainActivity).mainViewModel.stackFragment.add(KEY_HOME_FRAGMENT)
+        }
     }
 
     private fun initUI(typedArray: TypedArray) {
         binding.imgBack.visibility = if (typedArray.getBoolean(
                 R.styleable.ToolbarCustom_is_show_back_button,
+                false
+            )
+        ) View.VISIBLE else View.GONE
+        binding.imgSearch.visibility = if (typedArray.getBoolean(
+                R.styleable.ToolbarCustom_is_show_search_button,
                 false
             )
         ) View.VISIBLE else View.GONE

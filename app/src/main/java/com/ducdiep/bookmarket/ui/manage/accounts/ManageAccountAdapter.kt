@@ -58,4 +58,9 @@ class ManageAccountAdapter(
     override fun getItemCount(): Int {
         return listUser.size
     }
+
+    fun setData(listUser: List<User>){
+        this.listUser = listUser.reversed()
+        notifyDataSetChanged()
+    }
 }
