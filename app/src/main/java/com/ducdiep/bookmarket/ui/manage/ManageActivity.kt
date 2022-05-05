@@ -18,6 +18,7 @@ import com.ducdiep.bookmarket.ui.manage.accounts.ManageAccountFragment
 import com.ducdiep.bookmarket.ui.manage.books.ManageBookFragment
 import com.ducdiep.bookmarket.ui.manage.categories.ManageCategoryFragment
 import com.ducdiep.bookmarket.ui.manage.orders.ManageOrderFragment
+import com.ducdiep.bookmarket.ui.manage.statistical.StatisticalFragment
 import com.google.android.material.navigation.NavigationView
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -55,8 +56,8 @@ class ManageActivity : BaseActivity(R.layout.activity_manage),
 
     private fun initViewModel() {
         manageViewModel = ViewModelProvider(this).get(ManageViewModel::class.java)
-        manageViewModel.userDetails.observe(this){
-            if (it!=null){
+        manageViewModel.userDetails.observe(this) {
+            if (it != null) {
                 setData(it)
             }
         }
@@ -76,31 +77,38 @@ class ManageActivity : BaseActivity(R.layout.activity_manage),
         val id = item.itemId
         when (id) {
             R.id.manage_books -> {
-                if (idChecked!=R.id.manage_books){
+                if (idChecked != R.id.manage_books) {
                     setCurrentFragment(ManageBookFragment())
                     manageViewModel.stackFragment.add(KEY_MANAGE_BOOK)
                     binding.tbManage.title = "Quản lý sách"
                 }
             }
             R.id.manage_category -> {
-                if (idChecked!=R.id.manage_category){
+                if (idChecked != R.id.manage_category) {
                     setCurrentFragment(ManageCategoryFragment())
                     manageViewModel.stackFragment.add(KEY_MANAGE_CATEGORY)
                     binding.tbManage.title = "Quản lý danh mục"
                 }
             }
             R.id.manage_account -> {
-                if(idChecked!=R.id.manage_account){
+                if (idChecked != R.id.manage_account) {
                     setCurrentFragment(ManageAccountFragment())
                     manageViewModel.stackFragment.add(KEY_MANAGE_ACCOUNT)
                     binding.tbManage.title = "Quản lý tài khoản"
                 }
             }
             R.id.manage_order -> {
-                if (idChecked!=R.id.manage_order){
+                if (idChecked != R.id.manage_order) {
                     setCurrentFragment(ManageOrderFragment())
                     manageViewModel.stackFragment.add(KEY_MANAGE_ORDER)
                     binding.tbManage.title = "Quản lý dơn hàng"
+                }
+            }
+            R.id.manage_statistical -> {
+                if (idChecked != R.id.manage_statistical) {
+                    setCurrentFragment(StatisticalFragment())
+                    manageViewModel.stackFragment.add(KEY_MANAGE_STATISTICAL)
+                    binding.tbManage.title = "Quản lý doanh thu"
                 }
             }
         }
@@ -158,6 +166,11 @@ class ManageActivity : BaseActivity(R.layout.activity_manage),
                             idChecked = R.id.manage_order
                             resetChecked()
                             binding.tbManage.title = "Quản lý đơn hàng"
+                        }
+                        KEY_MANAGE_STATISTICAL -> {
+                            idChecked = R.id.manage_statistical
+                            resetChecked()
+                            binding.tbManage.title = "Quản lý doanh thu"
                         }
                     }
                     supportFragmentManager.popBackStack()

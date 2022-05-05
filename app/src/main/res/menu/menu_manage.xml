@@ -16,4 +16,8 @@
         android:id="@+id/manage_order"
         android:icon="@drawable/ic_baseline_shopping_cart"
         android:title="@string/manage_order" />
+    <item
+        android:id="@+id/manage_statistical"
+        android:icon="@drawable/ic_baseline_auto_graph_24"
+        android:title="Thống kê doanh thu" />
 </menu>
