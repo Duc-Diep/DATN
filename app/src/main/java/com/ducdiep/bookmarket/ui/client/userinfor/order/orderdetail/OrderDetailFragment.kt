@@ -69,8 +69,6 @@ class OrderDetailFragment : BaseFragment(R.layout.fragment_order_detail) {
             binding.tvTotalDiscount.text = "Giảm giá: ${getFormatMoney(discount)}"
             binding.tvTotalMoney.text = "Tổng tiền: ${getFormatMoney(sumMoney)}"
         }
-
-
     }
 
     private fun setDataUser(user: User) {

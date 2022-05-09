@@ -10,7 +10,7 @@ import com.ducdiep.bookmarket.base.STATUS_WAITING
 import com.ducdiep.bookmarket.databinding.ItemListOrderBinding
 import com.ducdiep.bookmarket.models.Order
 
-class ListOrderAdapter(var context: Context, var list: List<Order>, var callback: (Order) -> Unit) :
+class ListOrderAdapter(var context: Context, var list: List<Order>, var callback: (Order) -> Unit,var callbackCancel:(Order)->Unit) :
     RecyclerView.Adapter<ListOrderAdapter.ViewHolder>() {
     inner class ViewHolder(val binding: ItemListOrderBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -21,7 +21,7 @@ class ListOrderAdapter(var context: Context, var list: List<Order>, var callback
                 STATUS_WAITING -> "Đang chờ"
                 STATUS_RECEIVED -> "Đã nhận"
                 STATUS_SHIPPED -> "Đang giao"
-                else -> ""
+                else -> "Đã hủy"
             }
         }
     }
@@ -36,6 +36,9 @@ class ListOrderAdapter(var context: Context, var list: List<Order>, var callback
     private fun initListener(holder: ViewHolder) {
         holder.binding.rlBody.setOnClickListener {
             callback.invoke(list[holder.layoutPosition])
+        }
+        holder.binding.tvCancelOrder.setOnClickListener {
+            callbackCancel.invoke(list[holder.layoutPosition])
         }
     }
 

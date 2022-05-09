@@ -42,4 +42,9 @@ class ListOrderViewModel:ViewModel() {
             }
         })
     }
+
+    fun updateStatus(orderId: String, position: Int) {
+        val hm = hashMapOf<String, Any>("status" to position)
+        dataOrder.child(orderId).updateChildren(hm)
+    }
 }

@@ -131,6 +131,17 @@ fun Context.showAlertDialog(title: String?, message: String?, callback: () -> Un
     }
 }
 
+fun Context.showAlertDialogConfirm(title: String?, message: String?) {
+    val builder = MaterialAlertDialogBuilder(this)
+    builder.apply {
+        setTitle(title)
+        setMessage(message)
+        setPositiveButton(getString(R.string.ok)) { _, _ ->
+        }
+        show()
+    }
+}
+
 
 fun Context.showDialogInputUser(
     message: String = "",

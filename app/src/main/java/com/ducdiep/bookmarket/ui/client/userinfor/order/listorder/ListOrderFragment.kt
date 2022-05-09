@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ducdiep.bookmarket.R
 import com.ducdiep.bookmarket.base.BaseFragment
 import com.ducdiep.bookmarket.base.KEY_USER_INFOR_FRAGMENT
+import com.ducdiep.bookmarket.base.STATUS_WAITING
 import com.ducdiep.bookmarket.databinding.FragmentListOrderBinding
+import com.ducdiep.bookmarket.extensions.showAlertDialog
+import com.ducdiep.bookmarket.extensions.showAlertDialogConfirm
+import com.ducdiep.bookmarket.extensions.showDialogConfirm
 import com.ducdiep.bookmarket.extensions.viewBinding
 import com.ducdiep.bookmarket.models.Order
 import com.ducdiep.bookmarket.ui.client.main.MainActivity
@@ -26,9 +30,23 @@ class ListOrderFragment : BaseFragment(R.layout.fragment_list_order) {
 
     private fun initViews() {
         context?.let {
-            listOrderAdapter = ListOrderAdapter(it, listOf()) {
+            listOrderAdapter = ListOrderAdapter(it, listOf(), {
                 navigateToDetail(it)
-            }
+            }, { order ->
+                context?.let {
+                    if (order.status == STATUS_WAITING) {
+                        it.showDialogConfirm(
+                            "Bạn có chắc chắn muốn hủy đơn hàng này không?",
+                            "Đồng ý",
+                            "Hủy bỏ"
+                        ) {
+                            listOrderViewModel.updateStatus(order.order_id, 3)
+                        }
+                    } else {
+                        it.showAlertDialogConfirm("Xác nhận", "Bạn không thể hủy đơn hàng này")
+                    }
+                }
+            })
             binding.rcvOrder.apply {
                 adapter = listOrderAdapter
                 setHasFixedSize(true)

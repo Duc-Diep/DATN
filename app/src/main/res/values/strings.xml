@@ -78,7 +78,7 @@
     <string name="megabook">MegaBook</string>
     <string name="hotline">Hotline: 098206317</string>
     <string name="infor_custome">Thông tin cá nhân</string>
-    <string name="manage_order">Quản lý đơn hàng</string>
+    <string name="manage_order">Đơn hàng của tôi</string>
     <string name="manage_admin">Quản lý sản phẩm (admin)</string>
     <string name="change_pass">Đổi mật khẩu</string>
     <string name="email">Email:</string>
@@ -103,4 +103,5 @@
     <string name="economic">Sách kinh tế mới nhất</string>
     <string name="more">Xem thêm</string>
     <string name="unmore">Thu gọn</string>
+    <string name="manage_orderr">Quản lý đơn hàng</string>
 </resources>

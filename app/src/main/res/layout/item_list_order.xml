@@ -14,8 +14,10 @@
 
     <TextView
         android:id="@+id/tv_order_id"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:layout_toLeftOf="@id/tv_cancel_order"
         android:layout_toEndOf="@id/tv_order"
         android:text="#2352345"
         android:textColor="#4DFF03"
@@ -36,7 +38,17 @@
         android:layout_below="@id/tv_order"
         android:layout_marginStart="@dimen/common_margin"
         android:layout_toEndOf="@id/tv_time_order"
-        android:textColor="@color/blue_teal"
         android:text="Trạng thái: "
+        android:textColor="@color/blue_teal"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_cancel_order"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="Huỷ đơn"
+        android:textColor="@color/red"
         android:textSize="20dp" />
 </RelativeLayout>

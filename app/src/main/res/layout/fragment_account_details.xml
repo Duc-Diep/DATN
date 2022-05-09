@@ -7,18 +7,20 @@
     android:focusable="true"
     android:focusableInTouchMode="true">
 
-    <com.ducdiep.bookmarket.ui.widget.ToolbarCustom
-        android:id="@+id/tb_user_details"
-        app:title="@string/account_details"
-        app:is_show_back_button="true"
+    <TextView
+        android:id="@+id/tv_acc_detail_title"
+        android:text="@string/account_details"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/common_padding"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_avatar_user"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_below="@id/tb_user_details"
+        android:layout_below="@id/tv_acc_detail_title"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp" />
 

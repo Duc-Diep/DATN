@@ -245,7 +245,7 @@
             android:maxLines="4"
             android:padding="5dp"
             android:paddingStart="10dp"
-            android:text="sdjhfgvonagopiasbngiougnboeirhgbneosiuynboesiuyoesiynb[seiunbsuyusepyn" />
+            android:text="Đây là mô tả của sách" />
 
         <TextView
             android:id="@+id/tv_more"

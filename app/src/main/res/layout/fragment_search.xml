@@ -7,6 +7,7 @@
 
     <com.ducdiep.bookmarket.ui.widget.ToolbarCustom
         android:id="@+id/tb_search"
+        app:title="Tìm kiếm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:is_show_back_button="true" />

@@ -15,7 +15,7 @@
     <item
         android:id="@+id/manage_order"
         android:icon="@drawable/ic_baseline_shopping_cart"
-        android:title="@string/manage_order" />
+        android:title="@string/manage_orderr" />
     <item
         android:id="@+id/manage_statistical"
         android:icon="@drawable/ic_baseline_auto_graph_24"
