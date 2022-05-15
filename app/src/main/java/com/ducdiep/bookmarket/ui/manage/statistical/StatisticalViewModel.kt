@@ -22,7 +22,7 @@ class StatisticalViewModel : ViewModel() {
         getListOrder()
     }
 
-    fun getListDataChart(month: Int) {
+    fun getListDataChart(month: Int, currentYear: Int) {
         var calendar = Calendar.getInstance()
         calendar.set(Calendar.MONTH, month)
         var day = calendar.getActualMaximum(Calendar.DAY_OF_MONTH)
@@ -34,13 +34,11 @@ class StatisticalViewModel : ViewModel() {
         Log.d("abcc", "link list: $linkedHashMap ")
         listOrder.value?.forEach { order ->
             var calendar = order.created_at.createCalendarInstance()
-            if (calendar.get(Calendar.MONTH) == month && calendar.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)) {
+            if (calendar.get(Calendar.MONTH) == month && calendar.get(Calendar.YEAR) == currentYear) {
                 val dayOfMonth = calendar.get(Calendar.DATE)
                 Log.d("abcc", "day of month: $dayOfMonth")
-                val money = linkedHashMap.get(dayOfMonth)
-                money?.let {
-                    linkedHashMap.set(dayOfMonth, it + order.total_amount)
-                }
+                val money = linkedHashMap[dayOfMonth]?:0
+                    linkedHashMap.set(dayOfMonth, money + order.total_amount)
             }
         }
         listDataChart.value = linkedHashMap

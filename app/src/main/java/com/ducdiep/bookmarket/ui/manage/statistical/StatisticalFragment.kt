@@ -21,9 +21,11 @@ import kotlin.math.roundToInt
 
 class StatisticalFragment : BaseFragment(R.layout.fragment_statistical) {
     var currentMonth = Calendar.getInstance().get(Calendar.MONTH)
+    var currentYear = Calendar.getInstance().get(Calendar.YEAR)
     private val listTime: ArrayList<Int> = arrayListOf()
     private val binding by viewBinding(FragmentStatisticalBinding::bind)
     lateinit var statisticalViewModel: StatisticalViewModel
+    lateinit var statisticalAdapter: StatisticalAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
@@ -34,43 +36,53 @@ class StatisticalFragment : BaseFragment(R.layout.fragment_statistical) {
     private fun initListener() {
         binding.imgPrev.setOnClickListener {
             if (currentMonth == 1) {
-
+                currentYear -= 1
+                currentMonth = 12
             } else {
                 currentMonth -= 1
-                binding.tvMonth.text = "Tháng $currentMonth"
-                statisticalViewModel.getListDataChart(currentMonth)
+                binding.tvMonth.text = "Tháng $currentMonth/$currentYear"
+                statisticalViewModel.getListDataChart(currentMonth, currentYear)
             }
         }
         binding.imgNext.setOnClickListener {
             if (currentMonth == 12) {
-
+                currentYear += 1
+                currentMonth = 1
             } else {
                 currentMonth += 1
-                binding.tvMonth.text = "Tháng $currentMonth"
-                statisticalViewModel.getListDataChart(currentMonth)
+                binding.tvMonth.text = "Tháng $currentMonth/$currentYear"
+                statisticalViewModel.getListDataChart(currentMonth, currentYear)
             }
         }
     }
 
     private fun initViews() {
-        binding.tvMonth.text = "Tháng $currentMonth"
+        binding.tvMonth.text = "Tháng $currentMonth/$currentYear"
+        context?.let {
+            statisticalAdapter = StatisticalAdapter(it, linkedMapOf())
+            binding.rcvDay.apply {
+                adapter = statisticalAdapter
+                setHasFixedSize(true)
+            }
+        }
     }
 
     private fun initObserve() {
         statisticalViewModel = ViewModelProvider(this).get(StatisticalViewModel::class.java)
         statisticalViewModel.listOrder.observe(viewLifecycleOwner) {
-                statisticalViewModel.getListDataChart(currentMonth)
+            statisticalViewModel.getListDataChart(currentMonth, currentYear)
         }
-        statisticalViewModel.listDataChart.observe(viewLifecycleOwner){
+        statisticalViewModel.listDataChart.observe(viewLifecycleOwner) {
             initChart(it)
+            statisticalAdapter.setData(it)
         }
     }
 
     private fun initChart(listData: LinkedHashMap<Int, Long>) {
         binding.bcData.apply {
             data = generateBarData(listData)
-            animateXY(1000,1000)
-            onChartGestureListener = object :OnChartGestureListener{
+            animateXY(1000, 1000)
+            onChartGestureListener = object : OnChartGestureListener {
                 override fun onChartGestureStart(
                     me: MotionEvent?,
                     lastPerformedGesture: ChartTouchListener.ChartGesture?
@@ -129,7 +141,7 @@ class StatisticalFragment : BaseFragment(R.layout.fragment_statistical) {
                 isCenterAxisLabelsEnabled
                 granularity = 1F
             }
-            setScaleMinima(1.3F,1F)
+            setScaleMinima(1.3F, 1F)
 
             val yAxisValueFormatter = object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {

@@ -22,7 +22,7 @@ class ManageOrderAdapter(
             binding.tvOrderId.text = "#${order.order_id}"
             binding.tvTimeOrder.text = order.created_at
             val spAdapter =
-                SpinnerStatusOrderAdapter(context, listOf("Đang chờ", "Đã giao", "Đã nhận"))
+                SpinnerStatusOrderAdapter(context, listOf("Đang chờ", "Đã giao", "Đã nhận", "Đã hủy"))
             spAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.spStatusOrder.adapter = spAdapter
             binding.spStatusOrder.setSelection(order.status)

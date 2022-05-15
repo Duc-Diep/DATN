@@ -66,8 +66,8 @@ class OrderDetailFragment : BaseFragment(R.layout.fragment_order_detail) {
             val discount = sum * 15 / 100
             val sumMoney = sum - discount
             binding.tvTotalAmount.text = "Tổng tạm tính: ${getFormatMoney(sum)} vnđ"
-            binding.tvTotalDiscount.text = "Giảm giá: ${getFormatMoney(discount)}"
-            binding.tvTotalMoney.text = "Tổng tiền: ${getFormatMoney(sumMoney)}"
+            binding.tvTotalDiscount.text = "Giảm giá: ${getFormatMoney(discount)}vnđ"
+            binding.tvTotalMoney.text = "Tổng tiền: ${getFormatMoney(sumMoney)}vnđ"
         }
     }
 
